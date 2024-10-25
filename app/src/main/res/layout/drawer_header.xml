@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="#F24141"
+    android:background="#EFEAEA"
     android:gravity="bottom"
     android:padding="20dp"
     android:layout_height="180dp">
@@ -13,7 +13,7 @@
         android:layout_height="60dp"
         app:cardCornerRadius="40dp"
         app:cardElevation="0dp"
-        android:backgroundTint="#DBD6D6">
+        android:backgroundTint="#B8ADAD">
 
         <ImageView
             android:layout_width="match_parent"

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/OverflowBuscar"
+        android:icon="@drawable/round_search_24"
+        android:title="TODO"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/OverflowSobreNosotros"
+        android:title="@string/sobreNosotros"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/OverflowContactanos"
+        android:title="@string/contactanos"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/OverflowCompartir"
+        android:title="@string/compartir"
+        app:showAsAction="never" />
+
+
+</menu>

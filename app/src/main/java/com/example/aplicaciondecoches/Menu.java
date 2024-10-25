@@ -1,21 +1,27 @@
 package com.example.aplicaciondecoches;
 
 import android.os.Bundle;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.widget.Toolbar;
+
 
 public class Menu extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ImageButton buttonDrawerToggle;
-
+    Toolbar toolbar;
 
 
     @Override
@@ -30,7 +36,9 @@ public class Menu extends AppCompatActivity {
         });
 
         drawerLayout = findViewById(R.id.drawerLayout);
-        buttonDrawerToggle =  findViewById(R.id.buttonDrawerToggle);
+        buttonDrawerToggle = findViewById(R.id.buttonDrawerToggle);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
         buttonDrawerToggle.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +47,18 @@ public class Menu extends AppCompatActivity {
                 drawerLayout.open();
             }
         });
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.overflow_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
 

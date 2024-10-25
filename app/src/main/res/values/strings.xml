@@ -13,7 +13,16 @@
     <string name="cafe_text">Cafe</string>
     <string name="sandwich_text">sandwich</string>
     <string name="finalizarPedido_text">FINALIZAR PEDIDO</string>
-    <string name="item_1">Aqui va una opcion</string>
+    <string name="item_Pasteles">Pasteles</string>
+    <string name="item_Crepas">Crepas</string>
+    <string name="item_Cafe">Cafe</string>
+    <string name="item_Galletas">Galletas</string>
+    <string name="item_Pan">Pan</string>
+    <string name="item_Variado">Variado</string>
     <string name="username_text">Username</string>
     <string name="useremail_text">User email</string>
+    <string name="contactanos">Contactanos</string>
+    <string name="sobreNosotros">Sobre nosotros</string>
+    <string name="compartir">Compartir</string>
+    <string name="cerrarSesion">Cerrar sesion</string>
 </resources>
