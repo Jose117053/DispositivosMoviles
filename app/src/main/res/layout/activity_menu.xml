@@ -8,7 +8,8 @@
     android:background="#FFFFFF"
     tools:context=".Menu">
 
-    <!-- Toolbar en la parte superior -->
+
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -20,264 +21,286 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="CATALOGO" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <!-- Botón en la izquierda -->
+        <ImageButton
+            android:id="@+id/buttonDrawerToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_menu_24"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            android:layout_gravity="start" />
+
+        <!-- Texto centrado -->
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CATALOGO"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:layout_gravity="center" />
+
+    </androidx.appcompat.widget.Toolbar>
+
 
     <View
-        android:id="@+id/view6"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="264dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/view6"
+            android:layout_width="185dp"
+            android:layout_height="174dp"
+            android:layout_marginTop="264dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#928989"
+            android:foregroundTint="#020202"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="145dp"
-        android:layout_height="108dp"
-        android:layout_marginTop="288dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cafe" />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="145dp"
+            android:layout_height="108dp"
+            android:layout_marginTop="288dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.139"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cafe" />
 
-    <View
-        android:id="@+id/view4"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginBottom="100dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
-        app:layout_constraintStart_toStartOf="parent" />
+        <View
+            android:id="@+id/view4"
+            android:layout_width="185dp"
+            android:layout_height="174dp"
+            android:layout_marginBottom="100dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#928989"
+            android:foregroundTint="#020202"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.929"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="185dp"
-        android:layout_height="105dp"
-        android:layout_marginBottom="148dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/pastel" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="185dp"
+            android:layout_height="105dp"
+            android:layout_marginBottom="148dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.929"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/pastel" />
 
-    <View
-        android:id="@+id/view7"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="8dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/view7"
+            android:layout_width="185dp"
+            android:layout_height="174dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="8dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#928989"
+            android:foregroundTint="#020202"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="185dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/galleta" />
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="185dp"
+            android:layout_height="105dp"
+            android:layout_marginTop="96dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.951"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/galleta" />
 
-    <View
-        android:id="@+id/view9"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="448dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/view9"
+            android:layout_width="185dp"
+            android:layout_height="174dp"
+            android:layout_marginTop="448dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#928989"
+            android:foregroundTint="#020202"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view10"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="72dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/view10"
+            android:layout_width="185dp"
+            android:layout_height="174dp"
+            android:layout_marginTop="72dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#928989"
+            android:foregroundTint="#020202"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="264dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="185dp"
+            android:layout_height="174dp"
+            android:layout_marginTop="264dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#928989"
+            android:foregroundTint="#020202"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.951"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="176dp"
-        android:layout_height="106dp"
-        android:layout_marginTop="288dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:srcCompat="@drawable/chocolate" />
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="176dp"
+            android:layout_height="106dp"
+            android:layout_marginTop="288dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.931"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            app:srcCompat="@drawable/chocolate" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="165dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="476dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/te" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="165dp"
+            android:layout_height="102dp"
+            android:layout_marginTop="476dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/te" />
 
-    <TextView
-        android:id="@+id/sandwich1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="404dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="CHOCOLATE"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/sandwich1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="404dp"
+            android:backgroundTint="#000000"
+            android:shadowColor="#020202"
+            android:text="@string/chocolate_text"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.809"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/sandwich2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="SANDWICH"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.215"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/sandwich2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="212dp"
+            android:backgroundTint="#000000"
+            android:shadowColor="#020202"
+            android:text="@string/sandwich_text"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.215"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/sandwich3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="404dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="CAFE"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/sandwich3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="404dp"
+            android:backgroundTint="#000000"
+            android:shadowColor="#020202"
+            android:text="@string/cafe_text"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.27"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/sandwich4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="592dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="TE"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/sandwich4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="592dp"
+            android:backgroundTint="#000000"
+            android:shadowColor="#020202"
+            android:text="@string/te_text"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.258"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/sandwich5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="GALLETAS"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.779"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/sandwich5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="212dp"
+            android:backgroundTint="#000000"
+            android:shadowColor="#020202"
+            android:text="@string/galletas_text"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.779"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/sandwich6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="PASTEL"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/sandwich6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="120dp"
+            android:backgroundTint="#000000"
+            android:shadowColor="#020202"
+            android:text="@string/pastel_text"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.77"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="117dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sandwich" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="117dp"
+            android:layout_marginTop="96dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.141"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/sandwich" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="179dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="16dp"
-        android:text="VER CARRITO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="179dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/view_cart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="179dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="16dp"
-        android:text="FINALIZAR PEDIDO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.926"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="179dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/finalizarPedido_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.926"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
