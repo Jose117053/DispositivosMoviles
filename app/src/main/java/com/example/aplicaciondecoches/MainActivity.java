@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.EditText;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -16,28 +16,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // Configurar la escucha de WindowInsets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // Referenciar los elementos del layout
+        EditText emailField = findViewById(R.id.editTextText8); // Campo de Email
+        EditText passwordField = findViewById(R.id.editTextText5); // Campo de Password
+        Button loginButton = findViewById(R.id.button); // Botón LOGIN
 
-        // Obtener referencia al botón con id: button
-        Button loginButton = findViewById(R.id.button);
-
-        // Agregar listener para navegar hacia MenuActivity
+        // Listener para el botón LOGIN
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Crear un Intent para iniciar MenuActivity
-                Intent intent = new Intent(MainActivity.this, Menu.class);
-                startActivity(intent);
+                // Llamar al método para ir a la siguiente pantalla
+                goToMainScreen(emailField);
             }
         });
+    }
+
+    private void goToMainScreen(EditText emailField) {
+        // Crear el Intent para ir a la siguiente pantalla
+        Intent intent = new Intent(MainActivity.this, Menu.class); // Cambia "Menu.class" por la clase correcta
+        String email = emailField.getText().toString(); // Obtener el email ingresado
+        intent.putExtra("user_email", email); // Pasar el email al Intent
+
+        // Iniciar la siguiente actividad
+        startActivity(intent);
     }
 }
 //
