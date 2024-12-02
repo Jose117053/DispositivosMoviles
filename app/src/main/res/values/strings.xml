@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">AplicacionDeCoches</string>
+    <string name="login_text">Login</string>
+    <string name="register_text">Register</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Email</string>
+    <string name="catalog_title">CATALOGO</string>
+    <string name="te_text">TE</string>
+    <string name="chocolate_text">CHOCOLATE</string>
+    <string name="pastel_text">PASTEL</string>
+    <string name="galletas_text">GALLETAS</string>
+    <string name="view_cart">VER CARRITO</string>
+    <string name="cafe_text">CAFE</string>
+    <string name="sandwich_text">SANDWICH</string>
+    <string name="finalizarPedido_text">FINALIZAR PEDIDO</string>
+    <string name="item_Pasteles">Pasteles</string>
+    <string name="item_Crepas">Crepas</string>
+    <string name="item_Cafe">Cafe</string>
+    <string name="item_Galletas">Galletas</string>
+    <string name="item_Pan">Pan</string>
+    <string name="item_Variado">Variado</string>
+    <string name="username_text">Username</string>
+    <string name="useremail_text">User email</string>
+    <string name="contactanos">Contactanos</string>
+    <string name="sobreNosotros">Sobre nosotros</string>
+    <string name="compartir">Compartir</string>
+    <string name="cerrarSesion">Cerrar sesion</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/pastel"
+        android:id="@+id/menu_itemPastel"
+        android:title="@string/item_Pasteles" />
+
+    <item
+        android:icon="@drawable/coffe"
+        android:id="@+id/menu_itemCafe"
+        android:title="@string/item_Cafe" />
+
+    <item
+        android:icon="@drawable/pizza"
+        android:id="@+id/menu_itemCrepas"
+        android:title="@string/item_Crepas" />
+
+    <item
+        android:icon="@drawable/galletas"
+        android:id="@+id/menu_itemGalletas"
+        android:title="@string/item_Galletas" />
+
+    <item
+        android:icon="@drawable/variado"
+        android:id="@+id/menu_item3"
+        android:title="@string/item_Variado" />
+
+    <item
+        android:icon="@drawable/cerrarsesion"
+        android:id="@+id/menu_itemCerrarSesion"
+        android:title="@string/cerrarSesion" />
+
+
+</menu>
