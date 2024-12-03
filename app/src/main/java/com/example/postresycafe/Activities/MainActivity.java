@@ -1,4 +1,4 @@
-package com.example.postresycafe;
+package com.example.postresycafe.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,11 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.postresycafe.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,15 +30,39 @@ public class MainActivity extends AppCompatActivity {
                 goToMainScreen(emailField);
             }
         });
+
+
+        Button registerButton = findViewById(R.id.buttonRegister); // Botón de "Registrarse"
+
+        // Listener para el botón "Registrarse"
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Llamar al método para ir a la ventana de registro
+                goToRegisterScreen();
+            }
+        });
+
+
+
+
+
+
     }
 
     private void goToMainScreen(EditText emailField) {
         // Crear el Intent para ir a la siguiente pantalla
-        Intent intent = new Intent(MainActivity.this, Menu.class); // Cambia "Menu.class" por la clase correcta
+        Intent intent = new Intent(MainActivity.this, MenuActivity.class); // Cambia "Menu.class" por la clase correcta
         String email = emailField.getText().toString(); // Obtener el email ingresado
         intent.putExtra("user_email", email); // Pasar el email al Intent
 
         // Iniciar la siguiente actividad
+        startActivity(intent);
+    }
+
+    private void goToRegisterScreen() {
+        // Crear el Intent para ir a RegisterActivity
+        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 }

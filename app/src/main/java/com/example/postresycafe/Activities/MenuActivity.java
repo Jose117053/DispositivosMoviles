@@ -1,26 +1,20 @@
-package com.example.postresycafe;
+package com.example.postresycafe.Activities;
 
 import android.os.Bundle;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.postresycafe.R;
 import com.google.android.material.navigation.NavigationView;
 
 
-public class Menu extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ImageButton buttonDrawerToggle;

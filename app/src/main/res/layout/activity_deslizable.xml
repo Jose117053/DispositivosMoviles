@@ -7,7 +7,7 @@
     tools:openDrawer="start"
     android:id="@+id/drawerLayout"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <include
         layout="@layout/activity_menu" />
