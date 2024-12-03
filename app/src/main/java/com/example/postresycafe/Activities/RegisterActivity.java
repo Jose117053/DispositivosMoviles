@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         String username = editTextUsername.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        String confirmPassword = editText
+        String confirmPassword = editTextConfirmPassword.getText().toString().trim();
 
         // Validación básica de los campos
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
