@@ -23,7 +23,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             "idProduct INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "nameProduct TEXT NOT NULL, " +
             "description TEXT, " +
-            "price REAL NOT NULL)";
+            "price REAL NOT NULL," +
+            "CONSTRAINT unique_user_email UNIQUE (username, email))";
 
     private static final String CREATE_TABLE_ORDERS = "CREATE TABLE " +TABLE_ORDERS + "(" +
             "idOrder INTEGER PRIMARY KEY AUTOINCREMENT, " +

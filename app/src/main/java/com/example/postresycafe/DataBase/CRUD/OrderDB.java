@@ -5,11 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.postresycafe.DataBase.Entities.Order;
-import com.example.postresycafe.DataBase.OperacionesGeneralesBD;
 
 import java.util.ArrayList;
 
-public class OrderDB extends OperacionesGeneralesBD<Order> {
+public class OrderDB extends GeneralOperationsDB<Order> {
 
     private static final String TABLE_NAME = "ORDERS";
     private static final String COL_ID = "idOrder";

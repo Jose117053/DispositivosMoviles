@@ -56,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextPasswordConfirm"
+        android:id="@+id/editTextConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
-        android:id="@+id/editTextUsuario"
+        android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -100,7 +100,7 @@
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/black"
         android:ems="10"
-        android:hint="@string/usuario"
+        android:hint="@string/username_text"
         android:inputType="text"
         android:textColor="@color/black"
         android:textColorHint="@color/black"

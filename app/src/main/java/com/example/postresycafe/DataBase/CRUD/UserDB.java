@@ -3,12 +3,13 @@ package com.example.postresycafe.DataBase.CRUD;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 import com.example.postresycafe.DataBase.Entities.User;
-import com.example.postresycafe.DataBase.OperacionesGeneralesBD;
 
 import java.util.ArrayList;
 
-public class UserDB extends OperacionesGeneralesBD<User> {
+public class UserDB extends GeneralOperationsDB<User> {
 
     private static final String TABLE_NAME = "Users";
     private static final String COL_ID = "idUser";
@@ -63,4 +64,16 @@ public class UserDB extends OperacionesGeneralesBD<User> {
         }
         return users;
     }
+
+    public boolean getUser(String username) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM Users WHERE username = ?", new String[]{username});
+
+        // Si encontramos registros, significa que el nombre de usuario ya existe
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+
+        return exists;
+    }
+
 }

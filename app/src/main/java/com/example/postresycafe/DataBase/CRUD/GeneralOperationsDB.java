@@ -1,18 +1,20 @@
-package com.example.postresycafe.DataBase;
+package com.example.postresycafe.DataBase.CRUD;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.postresycafe.DataBase.DataBaseHelper;
+
 import java.util.ArrayList;
 
 
-public abstract class OperacionesGeneralesBD<T> {
+public abstract class GeneralOperationsDB<T> {
 
     protected SQLiteDatabase bdd;
     protected DataBaseHelper dbHelper;
 
-    public OperacionesGeneralesBD(Context context) {
+    public GeneralOperationsDB(Context context) {
         dbHelper = new DataBaseHelper(context);
     }
 

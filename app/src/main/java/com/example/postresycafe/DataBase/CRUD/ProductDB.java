@@ -1,6 +1,5 @@
 package com.example.postresycafe.DataBase.CRUD;
 
-import com.example.postresycafe.DataBase.OperacionesGeneralesBD;
 import com.example.postresycafe.DataBase.Entities.Product;
 
 import android.content.ContentValues;
@@ -10,7 +9,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 
 
-public class ProductDB extends OperacionesGeneralesBD<Product> {
+public class ProductDB extends GeneralOperationsDB<Product> {
 
     private static final String TABLE_NAME = "PRODUCTS";
     private static final String COL_ID = "idProduct";
