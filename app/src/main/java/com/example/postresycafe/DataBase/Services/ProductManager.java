@@ -16,7 +16,7 @@ public class ProductManager implements EntityManager<Product> {
     }
 
     @Override
-    public long add(Product product) {
+    public long insert(Product product) {
         productDB.openForWrite();
         long result = productDB.insertProduct(product);
         productDB.close();

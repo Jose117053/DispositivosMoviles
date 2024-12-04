@@ -3,7 +3,7 @@ package com.example.postresycafe.DataBase.Services;
 import java.util.ArrayList;
 
 public interface EntityManager<T> {
-    long add(T entity);
+    long insert(T entity);
     ArrayList<T> getAll();
     T getById(int id);
     boolean delete(int id);

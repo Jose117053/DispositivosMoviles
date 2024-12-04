@@ -16,7 +16,7 @@ public class OrderManager implements EntityManager<Order> {
     }
 
     @Override
-    public long add(Order order) {
+    public long insert(Order order) {
         orderDB.openForWrite();
         long result = orderDB.insertOrder(order);
         orderDB.close();
@@ -57,14 +57,4 @@ public class OrderManager implements EntityManager<Order> {
         return false;
     }
 
-    /**
-     * Crea una nueva orden asociada a un usuario y productos en el carrito.
-     * @param idUser     ID del usuario.
-     * @param totalPrice Precio total de la orden.
-     * @return ID de la orden creada.
-     */
-    public long createOrder(int idUser, double totalPrice) {
-        Order order = new Order(idUser, totalPrice);
-        return add(order);
-    }
 }

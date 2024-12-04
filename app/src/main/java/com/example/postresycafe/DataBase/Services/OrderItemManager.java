@@ -16,7 +16,7 @@ public class OrderItemManager implements EntityManager<OrderItem> {
     }
 
     @Override
-    public long add(OrderItem orderItem) {
+    public long insert(OrderItem orderItem) {
         orderItemDB.openForWrite();
         long result = orderItemDB.insertOrderItem(orderItem);
         orderItemDB.close();
@@ -38,11 +38,11 @@ public class OrderItemManager implements EntityManager<OrderItem> {
 
     @Override
     public boolean delete(int id) {
-        throw new UnsupportedOperationException("Eliminación de OrderItems no implementada.");
+        throw new UnsupportedOperationException("Esto deberia implementarse");
     }
 
     @Override
     public boolean update(OrderItem orderItem) {
-        throw new UnsupportedOperationException("Actualización de OrderItems no implementada.");
+        throw new UnsupportedOperationException("Esto tambien deberia implementarse");
     }
 }

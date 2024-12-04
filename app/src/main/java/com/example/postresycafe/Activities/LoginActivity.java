@@ -83,16 +83,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goToMenuScreen(String username) {
-        // Crear el Intent para ir a la siguiente pantalla
         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-        intent.putExtra("username", username); // Pasar el username al Intent
-
-        // Iniciar la siguiente actividad
+        intent.putExtra("username", username);
         startActivity(intent);
     }
 
     private void goToRegisterScreen() {
-        // Crear el Intent para ir a RegisterActivity
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }

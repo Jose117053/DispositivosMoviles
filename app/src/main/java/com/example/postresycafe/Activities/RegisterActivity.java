@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.postresycafe.DataBase.CRUD.UserDB;
 import com.example.postresycafe.DataBase.Entities.User;
+import com.example.postresycafe.DataBase.Services.UserManager;
 import com.example.postresycafe.R;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -31,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         nextButton = findViewById(R.id.buttonNext);
 
 
-        // Listener para el botón "Registrarse"
         userDB = new UserDB(this);
 
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +47,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
-        // Obtenemos los valores de los campos de entrada
         String username = editTextUsername.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
@@ -69,25 +68,19 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        // Abrimos la base de datos para escritura
-        userDB.openForWrite();
 
-        // Creamos el objeto User y lo insertamos en la base de datos
-        long result = userDB.insertUser(new User(username, email, password));
+        UserManager userManager=new UserManager(this);
+        long result = userManager.insert(new User(username, email, password));
 
-        userDB.close();
-
-        // Verificamos si el usuario se insertó correctamente
         if (result != -1) {
             Toast.makeText(RegisterActivity.this, "Te haz registrado con exito", Toast.LENGTH_SHORT).show();
-            goToMainScreen(); // Navegar a la siguiente actividad (MainActivity)
+            goToMainScreen();
         } else {
             Toast.makeText(RegisterActivity.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void goToMainScreen() {
-        // Crear el Intent para ir a RegisterActivity
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
     }

@@ -16,7 +16,7 @@ public class UserManager implements EntityManager<User> {
     }
 
     @Override
-    public long add(User user) {
+    public long insert(User user) {
         userDB.openForWrite();
         long result = userDB.insertUser(user);
         userDB.close();

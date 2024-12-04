@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AplicacionDeCoches</string>
+    <string name="app_name">CafesYPostres</string>
     <string name="login_text">Login</string>
     <string name="register_text">Register</string>
     <string name="password_hint">Password</string>

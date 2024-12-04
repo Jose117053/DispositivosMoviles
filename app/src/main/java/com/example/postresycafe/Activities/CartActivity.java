@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.postresycafe.DataBase.CRUD.OrderDB;
 import com.example.postresycafe.DataBase.Entities.Order;
 import com.example.postresycafe.DataBase.Entities.OrderItem;
 import com.example.postresycafe.DataBase.Services.OrderItemManager;
@@ -36,7 +35,7 @@ public class CartActivity extends AppCompatActivity {
 
         CartManager cartManager = CartManager.getInstance();
         updateCartView(cartManager);
-        Button addMoreButton = findViewById(R.id.buttonAddMore); // Botón de "Registrarse"
+        Button addMoreButton = findViewById(R.id.buttonAddMore);
 
         addMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +63,11 @@ public class CartActivity extends AppCompatActivity {
             // Obtener el precio final del carrito
             double totalPrice = calculateTotalPrice();
 
+            if(totalPrice == 0){
+                Toast.makeText(this, "No puedes crear ordenes sin productos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             // Obtener el ID del usuario de la sesión activa
             SharedPreferences sharedPreferences = getSharedPreferences("user_session", MODE_PRIVATE);
             int userId = sharedPreferences.getInt("user_id", -1);
@@ -72,12 +76,14 @@ public class CartActivity extends AppCompatActivity {
                 return;
             }
 
+
+
             // Insertar la orden en la base de datos
             OrderManager orderManager = new OrderManager(this);
             OrderItemManager orderItemManager = new OrderItemManager(this);
 
             Order newOrder = new Order(userId, totalPrice);
-            long orderId = orderManager.add(newOrder);
+            long orderId = orderManager.insert(newOrder);
 
             Log.d("ORDERIdDebug", "El orderID obtenido es: " + orderId);
 
@@ -95,7 +101,7 @@ public class CartActivity extends AppCompatActivity {
                 double localPrice = CartManager.getInstance().getCartPrices().get(i);
                 OrderItem orderItem = new OrderItem((int) orderId, productId, quantity, localPrice);
 
-                long result = orderItemManager.add(orderItem);
+                long result = orderItemManager.insert(orderItem);
                 if (result < 0) {
                     Toast.makeText(this, "Error al agregar un producto a la orden.", Toast.LENGTH_SHORT).show();
                 }
@@ -139,6 +145,8 @@ public class CartActivity extends AppCompatActivity {
 
             cartLayout.addView(cartItemView);
         }
+
+
 
         TextView finalPriceTextView = findViewById(R.id.textViewFinalPriceNumber);
         finalPriceTextView.setText(String.format(Locale.getDefault(), "$%.2f", finalPrice));
