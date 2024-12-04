@@ -33,4 +33,16 @@
     <string name="pastel">Pastel</string>
     <string name="yogurt">Yogurt</string>
     <string name="batido">Batido</string>
+    <string name="itemrandom">ItemRandom</string>
+    <string name="Aumentar">+</string>
+    <string name="Disminuir">-</string>
+    <string name="Uno">1</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="regresar">Regresar</string>
+    <string name="precio_final">Precio Final:</string>
+    <string name="quantity">Quantity</string>
+    <string name="final_price">Final price:</string>
+    <string name="back">Back</string>
+    <string name="accept">Accept</string>
 </resources>
