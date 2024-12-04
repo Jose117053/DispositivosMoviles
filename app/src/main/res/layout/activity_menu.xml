@@ -57,7 +57,7 @@
 
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonSeeCart"
         android:layout_width="179dp"
         android:layout_height="56dp"
         android:layout_marginBottom="4dp"

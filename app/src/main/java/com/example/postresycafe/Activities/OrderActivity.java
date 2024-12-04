@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -87,23 +88,21 @@ public class OrderActivity extends AppCompatActivity {
 
         Button buttonAddToCart = findViewById(R.id.buttonAddToCart);
 
+
+        int idProduct = getIntent().getIntExtra("item_id", -1);
+        if(idProduct == -1){
+            Toast.makeText(OrderActivity.this, "El producto no existe", Toast.LENGTH_SHORT).show();//esto nodeberia pasar
+            return;
+        }
+
+
         buttonAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Agregar el producto al carrito usando CartManager
-                CartManager.getInstance().addItem(itemName, quantity, totalPrice);
-
-                Log.d("OrderActivity", "Producto añadido al carrito:");
-                Log.d("OrderActivity", "Nombre: " + itemName);
-                Log.d("OrderActivity", "Cantidad: " + quantity);
-                Log.d("OrderActivity", "Precio total: " + totalPrice);
-
-                // Navegar a CartActivity
-                Intent intent = new Intent(OrderActivity.this, CartActivity.class);
-                startActivity(intent);
-
-                // Finalizar OrderActivity para regresar al menú después
-                finish();
+                CartManager.getInstance().addItem(idProduct,itemName, quantity, totalPrice);
+                Toast.makeText(OrderActivity.this, "Producto añadido al carrito", Toast.LENGTH_SHORT).show();
+                goToMenuScreen();
             }
         });
 

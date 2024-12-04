@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class CartManager {
     private static CartManager instance;
+    private final ArrayList<Integer> cartProductIds = new ArrayList<>(); // Lista de IDs de productos
     private final ArrayList<String> cartItems = new ArrayList<>();
     private final ArrayList<Integer> cartQuantities = new ArrayList<>();
     private final ArrayList<Double> cartPrices = new ArrayList<>();
@@ -18,10 +19,15 @@ public class CartManager {
         return instance;
     }
 
-    public void addItem(String itemName, int quantity, double totalPrice) {
+    public void addItem(int productId, String itemName, int quantity, double totalPrice) {
+        cartProductIds.add(productId);
         cartItems.add(itemName);
         cartQuantities.add(quantity);
         cartPrices.add(totalPrice);
+    }
+
+    public ArrayList<Integer> getCartProductIds() {
+        return cartProductIds;
     }
 
     public ArrayList<String> getCartItems() {
@@ -37,6 +43,7 @@ public class CartManager {
     }
 
     public void clearCart() {
+        cartProductIds.clear();
         cartItems.clear();
         cartQuantities.clear();
         cartPrices.clear();

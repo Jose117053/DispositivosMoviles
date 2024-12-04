@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,34 +52,49 @@ public class MenuActivity extends AppCompatActivity {
         if (userNameTextView != null && username != null) {
             userNameTextView.setText(username);
         }
+
+
         configureImageClicks();
+        buttonSeeCart();
+    }
+    public void buttonSeeCart(){
+        Button buttonSeeCart = findViewById(R.id.buttonSeeCart);
+        buttonSeeCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void configureImageClicks() {
         ImageView imageViewCafe = findViewById(R.id.imageViewCafe);
-        imageViewCafe.setOnClickListener(v -> openOrderActivity("Cafe", R.drawable.cafefinal, 50.0));
+        imageViewCafe.setOnClickListener(v -> openOrderActivity(1, "Cafe", R.drawable.cafefinal, 50.0));
 
         ImageView imageViewPastel = findViewById(R.id.imageViewPastel);
-        imageViewPastel.setOnClickListener(v -> openOrderActivity("Pastel", R.drawable.pastelfinal, 100.0));
+        imageViewPastel.setOnClickListener(v -> openOrderActivity(2, "Pastel", R.drawable.pastelfinal, 100.0));
 
         ImageView imageViewChocolate = findViewById(R.id.imageViewChocolate);
-        imageViewChocolate.setOnClickListener(v -> openOrderActivity("Chocolate", R.drawable.chocholatefinal, 75.0));
+        imageViewChocolate.setOnClickListener(v -> openOrderActivity(3, "Chocolate", R.drawable.chocholatefinal, 75.0));
 
         ImageView imageViewPan = findViewById(R.id.imageViewPan);
-        imageViewPan.setOnClickListener(v -> openOrderActivity("Pan", R.drawable.panfinal, 30.0));
+        imageViewPan.setOnClickListener(v -> openOrderActivity(4, "Pan", R.drawable.panfinal, 30.0));
 
         ImageView imageViewYogurt = findViewById(R.id.imageViewYogurtConFrutas);
-        imageViewYogurt.setOnClickListener(v -> openOrderActivity("Yogurt con Frutas", R.drawable.yogurtconfrutas, 60.0));
+        imageViewYogurt.setOnClickListener(v -> openOrderActivity(5, "Yogurt con Frutas", R.drawable.yogurtconfrutas, 60.0));
 
         ImageView imageViewBatido = findViewById(R.id.imageViewBatido);
-        imageViewBatido.setOnClickListener(v -> openOrderActivity("Batido", R.drawable.batidos, 70.0));
+        imageViewBatido.setOnClickListener(v -> openOrderActivity(6, "Batido", R.drawable.batidos, 70.0));
     }
 
-    private void openOrderActivity(String itemName, int imageResId, double basePrice) {
+
+    private void openOrderActivity(int idProduct, String itemName, int imageResId, double basePrice) {
         Intent intent = new Intent(MenuActivity.this, OrderActivity.class);
+        intent.putExtra("item_id", idProduct);
         intent.putExtra("item_name", itemName);
         intent.putExtra("item_image", imageResId);
-        intent.putExtra("item_price", basePrice); // Pasar el precio base
+        intent.putExtra("item_price", basePrice);
         startActivity(intent);
     }
 
@@ -90,4 +106,11 @@ public class MenuActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.overflow_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+    private void goToCartScreen() {
+        Intent intent = new Intent(MenuActivity.this, CartActivity.class);
+        startActivity(intent);
+    }
+
+
 }

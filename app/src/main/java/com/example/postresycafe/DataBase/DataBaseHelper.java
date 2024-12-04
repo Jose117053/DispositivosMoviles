@@ -9,6 +9,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_USERS = "Users";
     private static final String TABLE_PRODUCTS= "PRODUCTS";
     private static final String TABLE_ORDERS = "ORDERS";
+    private static final String TABLE_ORDER_ITEMS = "ORDERITEMS";
 
     private static final String DATABASE_NAME = "CafePostres.db";
     private static final int DATABASE_VERSION = 1;
@@ -17,19 +18,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             "idUser INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "username TEXT UNIQUE NOT NULL, " +
             "email TEXT UNIQUE NOT NULL, " +
-            "password TEXT NOT NULL)";
+            "password TEXT NOT NULL," +
+            "CONSTRAINT unique_user_email UNIQUE (username, email))";
 
     private static final String CREATE_TABLE_PRODUCTS = "CREATE TABLE " + TABLE_PRODUCTS + "(" +
             "idProduct INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "nameProduct TEXT NOT NULL, " +
             "description TEXT, " +
-            "price REAL NOT NULL," +
-            "CONSTRAINT unique_user_email UNIQUE (username, email))";
+            "price REAL NOT NULL)";
 
     private static final String CREATE_TABLE_ORDERS = "CREATE TABLE " +TABLE_ORDERS + "(" +
             "idOrder INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "idUser INTEGER NOT NULL, " +
             "total_price REAL NOT NULL)";
+
+    private static final String CREATE_TABLE_ORDER_ITEMS= "CREATE TABLE " + TABLE_ORDER_ITEMS + "(" +
+            "idOrder INTEGER NOT NULL, " +
+            "idProduct INTEGER NOT NULL, " +
+            "quantity INTEGER NOT NULL," +
+            "local_price REAL NOT NULL)";
 
 
     public DataBaseHelper(Context context) {
@@ -42,15 +49,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_USER);
         db.execSQL(CREATE_TABLE_PRODUCTS);
         db.execSQL(CREATE_TABLE_ORDERS);
-        //db.execSQL("INSERT INTO products (name, description, price) VALUES " +
-          //      "('Café Americano', 'Café clásico', 30.0), " +
-            //    "('Brownie', 'Postre de chocolate', 50.0)");
+        db.execSQL(CREATE_TABLE_ORDER_ITEMS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS users");
         db.execSQL("DROP TABLE IF EXISTS products");
+        db.execSQL("DROP TABLE IF EXISTS orders");
+        db.execSQL("DROP TABLE IF EXISTS orderitems");
         onCreate(db);
     }
 }

@@ -88,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void goToMainScreen() {
         // Crear el Intent para ir a RegisterActivity
-        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 

@@ -1,6 +1,8 @@
 package com.example.postresycafe.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,11 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.postresycafe.DataBase.CRUD.UserDB;
 import com.example.postresycafe.DataBase.Entities.User;
+import com.example.postresycafe.DataBase.Services.ProductManager;
+import com.example.postresycafe.DataBase.Services.UserManager;
 import com.example.postresycafe.R;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private UserDB userDB;
+    private static final String PREFS_NAME = "AppPrefs";
+    private static final String KEY_DEFAULT_INITIALIZED = "products_initialized";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +45,12 @@ public class MainActivity extends AppCompatActivity {
                 if (verifyLogin(username, password)) {
                     goToMenuScreen(username);
                 } else {
-                    Toast.makeText(MainActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
+        
 
         Button registerButton = findViewById(R.id.buttonRegister); // Botón de "Registrarse"
 
@@ -53,17 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
+        initializeDefaultData();
 
 
     }
@@ -73,12 +71,20 @@ public class MainActivity extends AppCompatActivity {
 
         User user = userDB.getUserByUsername(username);
 
-        return user != null && user.getPassword().equals(password);
+        if (user != null && user.getPassword().equals(password)) {
+            // Despues accedere a el a la hora de crea una orden
+            getSharedPreferences("user_session", MODE_PRIVATE)
+                    .edit()
+                    .putInt("user_id", user.getIdUser())
+                    .apply();
+            return true;
+        }
+        return false;
     }
 
     private void goToMenuScreen(String username) {
         // Crear el Intent para ir a la siguiente pantalla
-        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
         intent.putExtra("username", username); // Pasar el username al Intent
 
         // Iniciar la siguiente actividad
@@ -87,7 +93,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void goToRegisterScreen() {
         // Crear el Intent para ir a RegisterActivity
-        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
+    }
+
+    public void initializeDefaultData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        boolean productsInitialized = sharedPreferences.getBoolean(KEY_DEFAULT_INITIALIZED, false);
+
+        if (!productsInitialized) {
+
+            ProductManager productManager = new ProductManager(this);
+            int countProducts = productManager.initializeDefaultProducts();
+
+            UserManager userManager = new UserManager(this);
+            int countUsers = userManager.initializeDefaultUserr();
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(KEY_DEFAULT_INITIALIZED, true);
+            editor.apply();
+        }
     }
 }
