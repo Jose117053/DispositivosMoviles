@@ -50,4 +50,7 @@
     <string name="place_order">Place order</string>
     <string name="add_more_products">Add more products</string>
     <string name="x">X</string>
+    <string name="producto">Producto</string>
+    <string name="cantidad_1">Cantidad: 1</string>
+    <string name="precio_50_00">Precio: $50.00</string>
 </resources>

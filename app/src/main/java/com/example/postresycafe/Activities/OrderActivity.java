@@ -2,6 +2,7 @@ package com.example.postresycafe.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,14 +11,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.postresycafe.R;
+import com.example.postresycafe.Utils.CartManager;
 
 import java.util.Locale;
 
 public class OrderActivity extends AppCompatActivity {
 
     private int quantity = 1;
-    private double basePrice = 50.0; // Precio base del ítem
-    private double totalPrice = basePrice; // Precio total inicial
+    private double basePrice; // Precio base del ítem
+    private double totalPrice; // Precio total inicial
 
 
     @Override
@@ -28,6 +30,8 @@ public class OrderActivity extends AppCompatActivity {
         // Recibir el nombre del ítem y el ID de la imagen desde MenuActivity
         String itemName = getIntent().getStringExtra("item_name");
         int itemImageResId = getIntent().getIntExtra("item_image", -1); // -1 por defecto si no se encuentra
+        basePrice = getIntent().getDoubleExtra("item_price", 50.0); // Por defecto 50.0 si no se encuentra
+        totalPrice = basePrice;
 
         // Mostrar el nombre del ítem en el TextView
         TextView itemNameTextView = findViewById(R.id.textViewItemName);
@@ -35,7 +39,7 @@ public class OrderActivity extends AppCompatActivity {
             itemNameTextView.setText(itemName);
         }
 
-        // Mostrar la imagen seleccionada en el ImageView
+        // Muestra la imagen recibida dependiendo en donde se dio click ImageView
         ImageView itemImageView = findViewById(R.id.imageViewRandom);
         if (itemImageResId != -1) {
             itemImageView.setImageResource(itemImageResId);
@@ -86,14 +90,19 @@ public class OrderActivity extends AppCompatActivity {
         buttonAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Crear un Intent para pasar datos al carrito
+                // Agregar el producto al carrito usando CartManager
+                CartManager.getInstance().addItem(itemName, quantity, totalPrice);
+
+                Log.d("OrderActivity", "Producto añadido al carrito:");
+                Log.d("OrderActivity", "Nombre: " + itemName);
+                Log.d("OrderActivity", "Cantidad: " + quantity);
+                Log.d("OrderActivity", "Precio total: " + totalPrice);
+
+                // Navegar a CartActivity
                 Intent intent = new Intent(OrderActivity.this, CartActivity.class);
-                intent.putExtra("item_name", itemName);
-                intent.putExtra("quantity", quantity);
-                intent.putExtra("total_price", totalPrice);
                 startActivity(intent);
 
-                // Opcional: Finaliza OrderActivity para regresar al menú después
+                // Finalizar OrderActivity para regresar al menú después
                 finish();
             }
         });

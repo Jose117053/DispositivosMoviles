@@ -51,22 +51,37 @@ public class MenuActivity extends AppCompatActivity {
         if (userNameTextView != null && username != null) {
             userNameTextView.setText(username);
         }
-
-
-        ImageView imageViewCafe = findViewById(R.id.imageViewCafe);
-        imageViewCafe.setOnClickListener(v -> {
-            Intent intent = new Intent(MenuActivity.this, OrderActivity.class);
-            intent.putExtra("item_name", "Cafe");
-            intent.putExtra("item_image", R.drawable.cafefinal); // Pasar la imagen clickeada
-            startActivity(intent);
-        });
-
-
-
-
-
-
+        configureImageClicks();
     }
+
+    private void configureImageClicks() {
+        ImageView imageViewCafe = findViewById(R.id.imageViewCafe);
+        imageViewCafe.setOnClickListener(v -> openOrderActivity("Cafe", R.drawable.cafefinal, 50.0));
+
+        ImageView imageViewPastel = findViewById(R.id.imageViewPastel);
+        imageViewPastel.setOnClickListener(v -> openOrderActivity("Pastel", R.drawable.pastelfinal, 100.0));
+
+        ImageView imageViewChocolate = findViewById(R.id.imageViewChocolate);
+        imageViewChocolate.setOnClickListener(v -> openOrderActivity("Chocolate", R.drawable.chocholatefinal, 75.0));
+
+        ImageView imageViewPan = findViewById(R.id.imageViewPan);
+        imageViewPan.setOnClickListener(v -> openOrderActivity("Pan", R.drawable.panfinal, 30.0));
+
+        ImageView imageViewYogurt = findViewById(R.id.imageViewYogurtConFrutas);
+        imageViewYogurt.setOnClickListener(v -> openOrderActivity("Yogurt con Frutas", R.drawable.yogurtconfrutas, 60.0));
+
+        ImageView imageViewBatido = findViewById(R.id.imageViewBatido);
+        imageViewBatido.setOnClickListener(v -> openOrderActivity("Batido", R.drawable.batidos, 70.0));
+    }
+
+    private void openOrderActivity(String itemName, int imageResId, double basePrice) {
+        Intent intent = new Intent(MenuActivity.this, OrderActivity.class);
+        intent.putExtra("item_name", itemName);
+        intent.putExtra("item_image", imageResId);
+        intent.putExtra("item_price", basePrice); // Pasar el precio base
+        startActivity(intent);
+    }
+
 
 
     @Override

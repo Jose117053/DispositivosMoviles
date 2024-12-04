@@ -1,22 +1,23 @@
 package com.example.postresycafe.Activities;
 
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.postresycafe.R;
+import com.example.postresycafe.Utils.CartManager;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class CartActivity extends AppCompatActivity {
 
-    private ArrayList<String> cartItems = new ArrayList<>();
-    private ArrayList<Integer> cartQuantities = new ArrayList<>();
-    private ArrayList<Double> cartPrices = new ArrayList<>();
     private LinearLayout cartLayout;
 
     @Override
@@ -26,34 +27,55 @@ public class CartActivity extends AppCompatActivity {
 
         cartLayout = findViewById(R.id.cartLayout);
 
-        // Obtener datos pasados desde OrderActivity
-        String itemName = getIntent().getStringExtra("item_name");
-        int quantity = getIntent().getIntExtra("quantity", 0);
-        double totalPrice = getIntent().getDoubleExtra("total_price", 0.0);
+        CartManager cartManager = CartManager.getInstance();
+        updateCartView(cartManager);
+        Button addMoreButton = findViewById(R.id.buttonAddMore); // Botón de "Registrarse"
 
-        if (itemName != null && quantity > 0) {
-            cartItems.add(itemName);
-            cartQuantities.add(quantity);
-            cartPrices.add(totalPrice);
-        }
-
-        // Actualizar la vista del carrito
-        updateCartView();
+        addMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Llamar al método para ir a la ventana de registro
+                goToMenuScreen();
+            }
+        });
     }
 
-    private void updateCartView() {
+    private void updateCartView(CartManager cartManager) {
         cartLayout.removeAllViews(); // Limpia la vista antes de actualizar
 
-        for (int i = 0; i < cartItems.size(); i++) {
-            String item = cartItems.get(i);
-            int quantity = cartQuantities.get(i);
-            double price = cartPrices.get(i);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        double finalPrice = 0; // suma todos los precios de los productos que estan en el carrito
 
-            // Crear un TextView para cada producto
-            TextView itemView = new TextView(this);
-            itemView.setText(String.format(Locale.getDefault(),"%s - Cantidad: %d - Precio: $%.2f", item, quantity, price));
-            itemView.setTextSize(18);
-            cartLayout.addView(itemView);
+        for (int i = 0; i < cartManager.getCartItems().size(); i++) {
+            String item = cartManager.getCartItems().get(i);
+            int quantity = cartManager.getCartQuantities().get(i);
+            double price = cartManager.getCartPrices().get(i);
+
+            // Inflar el diseño del ítem del carrito, acumula uno tras otro
+            View cartItemView = inflater.inflate(R.layout.cart_item, cartLayout, false);
+
+            TextView itemNameView = cartItemView.findViewById(R.id.itemName);
+            TextView itemQuantityView = cartItemView.findViewById(R.id.itemQuantity);
+            TextView itemPriceView = cartItemView.findViewById(R.id.itemPrice);
+
+            itemNameView.setText(item);
+            itemQuantityView.setText(String.format(Locale.getDefault(), "Cantidad: %d", quantity));
+            itemPriceView.setText(String.format(Locale.getDefault(), "Precio: $%.2f", price));
+
+            finalPrice += price;
+
+
+            cartLayout.addView(cartItemView);
         }
+
+        TextView finalPriceTextView = findViewById(R.id.textViewFinalPriceNumber);
+        finalPriceTextView.setText(String.format(Locale.getDefault(), "$%.2f", finalPrice));
+
+    }
+
+
+    private void goToMenuScreen() {
+        Intent intent = new Intent(CartActivity.this, MenuActivity.class);
+        startActivity(intent);
     }
 }
