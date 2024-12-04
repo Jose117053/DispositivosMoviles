@@ -2,6 +2,7 @@ package com.example.postresycafe.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,10 +57,27 @@ public class MainActivity extends AppCompatActivity {
                 goToRegisterScreen();
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     private boolean verifyLogin(String username, String password) {
+        Log.d("LoginDebug", "Método verifyLogin fue llamado");  // Mensaje de depuración
+
         User user = userDB.getUserByUsername(username);
+
         return user != null && user.getPassword().equals(password);
     }
 

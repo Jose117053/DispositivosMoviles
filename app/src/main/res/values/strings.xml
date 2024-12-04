@@ -29,4 +29,8 @@
     <string name="usuario">Usuario</string>
     <string name="next">Next</string>
     <string name="confirm_password">Confirm password</string>
+    <string name="catalogo">CATALOGO</string>
+    <string name="pastel">Pastel</string>
+    <string name="yogurt">Yogurt</string>
+    <string name="batido">Batido</string>
 </resources>

@@ -21,9 +21,9 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#8D8484"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,278 +37,259 @@
             android:src="@drawable/baseline_menu_24"
             android:background="@android:color/transparent"
             android:padding="5dp"
-            android:layout_gravity="start" />
+            android:layout_gravity="start"
+
+            />
 
         <!-- Texto centrado -->
         <TextView
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CATALOGO"
+            android:text="@string/catalogo"
             android:textColor="@android:color/white"
             android:textSize="20sp"
+            android:textStyle="bold"
             android:layout_gravity="center" />
 
     </androidx.appcompat.widget.Toolbar>
 
 
-    <View
-        android:id="@+id/view6"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="264dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="145dp"
-        android:layout_height="108dp"
-        android:layout_marginTop="288dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cafe" />
-
-    <View
-        android:id="@+id/view4"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="448dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.924"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="185dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="472dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pastel" />
-
-    <View
-        android:id="@+id/view7"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="8dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="185dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/galleta" />
-
-    <View
-        android:id="@+id/view9"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="448dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view10"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="72dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="185dp"
-        android:layout_height="174dp"
-        android:layout_marginTop="264dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#928989"
-        android:foregroundTint="#020202"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="176dp"
-        android:layout_height="106dp"
-        android:layout_marginTop="288dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:srcCompat="@drawable/chocolate" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="165dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="476dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/te" />
-
-    <TextView
-        android:id="@+id/sandwich1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="404dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="@string/chocolate_text"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sandwich2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="@string/sandwich_text"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.215"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sandwich3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="404dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="@string/cafe_text"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sandwich4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="592dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="@string/te_text"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sandwich5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="@string/galletas_text"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.779"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/sandwich6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:backgroundTint="#000000"
-        android:shadowColor="#020202"
-        android:text="@string/pastel_text"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.77"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="117dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sandwich" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="179dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/view_cart"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/button_background"
+        android:text="@string/view_cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <Button
         android:id="@+id/button3"
         android:layout_width="179dp"
         android:layout_height="56dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/finalizarPedido_text"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/button_background"
+        android:text="@string/finalizarPedido_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <FrameLayout
+        android:layout_width="205dp"
+        android:layout_height="205dp"
+        android:layout_marginTop="55dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageViewCafe"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/cafefinal" />
+
+        <TextView
+            android:id="@+id/textViewCafe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/cafe_text"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+
+    </FrameLayout>
+
+
+
+
+
+    <FrameLayout
+        android:layout_width="206dp"
+        android:layout_height="206dp"
+        android:layout_marginStart="205dp"
+        android:layout_marginTop="54dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageViewPastel"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/pastelfinal" />
+
+        <TextView
+            android:id="@+id/textViewPastel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/pastel"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="263dp"
+            tools:layout_editor_absoluteY="138dp" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="206dp"
+        android:layout_height="206dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginEnd="208dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageViewChocolate"
+            android:layout_width="205dp"
+            android:layout_height="205dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/chocholatefinal" />
+
+        <TextView
+            android:id="@+id/textViewChocolate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/chocolate_text"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="-25dp"
+            tools:layout_editor_absoluteY="324dp" />
+
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageViewPan"
+            android:layout_width="205dp"
+            android:layout_height="205dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/panfinal" />
+
+        <TextView
+            android:id="@+id/textViewPan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/item_Pan"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="-25dp"
+            tools:layout_editor_absoluteY="324dp" />
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="208dp"
+        android:layout_height="206dp"
+        android:layout_marginTop="464dp"
+        android:layout_marginEnd="205dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageViewYogurtConFrutas"
+            android:layout_width="205dp"
+            android:layout_height="205dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/yogurtconfrutas" />
+
+        <TextView
+            android:id="@+id/textViewYogurt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/yogurt"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="-25dp"
+            tools:layout_editor_absoluteY="324dp" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayoutBatidos"
+        android:layout_width="208dp"
+        android:layout_height="206dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="464dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageViewBatido"
+            android:layout_width="205dp"
+            android:layout_height="205dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/batidos" />
+
+        <TextView
+            android:id="@+id/textViewBatido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:text="@string/batido"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="-25dp"
+            tools:layout_editor_absoluteY="324dp" />
+
+    </FrameLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

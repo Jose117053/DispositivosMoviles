@@ -1,9 +1,11 @@
 package com.example.postresycafe.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,17 +40,32 @@ public class MenuActivity extends AppCompatActivity {
         }
 
         // Recibir datos del Intent
-        String userEmail = getIntent().getStringExtra("user_email");
+        String username = getIntent().getStringExtra("username");
 
         // Acceder al header del NavigationView
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
         // Actualizar los TextView en el header
-        TextView emailTextView = headerView.findViewById(R.id.user_email);
-        if (emailTextView != null && userEmail != null) {
-            emailTextView.setText(userEmail);
+        TextView userNameTextView = headerView.findViewById(R.id.user_name);
+        if (userNameTextView != null && username != null) {
+            userNameTextView.setText(username);
         }
+
+
+        ImageView imageViewCafe = findViewById(R.id.imageViewCafe);
+        imageViewCafe.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, OrderActivity.class);
+            intent.putExtra("item_name", "Cafe");
+            intent.putExtra("item_image", R.drawable.cafefinal); // Pasar la imagen clickeada
+            startActivity(intent);
+        });
+
+
+
+
+
+
     }
 
 

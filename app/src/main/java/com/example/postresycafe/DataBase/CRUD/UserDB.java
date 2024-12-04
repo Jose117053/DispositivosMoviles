@@ -30,6 +30,7 @@ public class UserDB extends GeneralOperationsDB<User> {
     }
 
     public User getUserByUsername(String username) {
+        openForRead();
         Cursor c = query(TABLE_NAME, new String[]{COL_ID, COL_USERNAME, COL_EMAIL, COL_PASSWORD},
                 COL_USERNAME + " = ?", new String[]{username}, null);
 
