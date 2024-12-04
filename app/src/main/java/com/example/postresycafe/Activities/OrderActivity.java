@@ -81,6 +81,23 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
 
+        Button buttonAddToCart = findViewById(R.id.buttonAddToCart);
+
+        buttonAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Crear un Intent para pasar datos al carrito
+                Intent intent = new Intent(OrderActivity.this, CartActivity.class);
+                intent.putExtra("item_name", itemName);
+                intent.putExtra("quantity", quantity);
+                intent.putExtra("total_price", totalPrice);
+                startActivity(intent);
+
+                // Opcional: Finaliza OrderActivity para regresar al menú después
+                finish();
+            }
+        });
+
     }
 
     private void goToMenuScreen() {

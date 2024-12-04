@@ -45,4 +45,9 @@
     <string name="final_price">Final price:</string>
     <string name="back">Back</string>
     <string name="accept">Accept</string>
+    <string name="buy_now">Buy now</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="place_order">Place order</string>
+    <string name="add_more_products">Add more products</string>
+    <string name="x">X</string>
 </resources>
