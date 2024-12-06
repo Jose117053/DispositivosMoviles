@@ -10,12 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.postresycafe.R;
 import com.google.android.material.navigation.NavigationView;
-
+import com.google.android.material.snackbar.Snackbar;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -26,16 +26,18 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  EdgeToEdge.enable(this);
         setContentView(R.layout.activity_deslizable);
 
+        // Configuración inicial
         drawerLayout = findViewById(R.id.drawerLayout);
         buttonDrawerToggle = findViewById(R.id.buttonDrawerToggle);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Abre el menú lateral al hacer clic en el botón de menú
         buttonDrawerToggle.setOnClickListener(view -> drawerLayout.open());
 
+        // Oculta el título por defecto en el Toolbar
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
@@ -43,34 +45,98 @@ public class MenuActivity extends AppCompatActivity {
         // Recibir datos del Intent
         String username = getIntent().getStringExtra("username");
 
-        // Acceder al header del NavigationView
+        // Configuración del NavigationView
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
 
-        // Actualizar los TextView en el header
+        // Actualizar el nombre de usuario en el encabezado del menú lateral
         TextView userNameTextView = headerView.findViewById(R.id.user_name);
         if (userNameTextView != null && username != null) {
             userNameTextView.setText(username);
         }
 
+        // Configurar el listener para los ítems del menú
+        navigationView.setNavigationItemSelectedListener(menuItem -> {
+            handleMenuClick(menuItem.getItemId());
+            drawerLayout.closeDrawers(); // Cierra el menú lateral
+            return true;
+        });
 
+        // Configurar clics en imágenes y botones
         configureImageClicks();
         buttonSeeCart();
     }
-    public void buttonSeeCart(){
+
+    // Método para manejar clics en los ítems del menú lateral
+    private void handleMenuClick(int itemId) {
+        String message;
+
+        if (itemId == R.id.menu_itemPastel) {
+            message = "Seleccionaste: Pasteles";
+        } else if (itemId == R.id.menu_itemCafe) {
+            message = "Seleccionaste: Café";
+        } else if (itemId == R.id.menu_itemCrepas) {
+            message = "Seleccionaste: Crepas";
+        } else if (itemId == R.id.menu_itemGalletas) {
+            message = "Seleccionaste: Galletas";
+        } else if (itemId == R.id.menu_item3) {
+            message = "Seleccionaste: Variado";
+        } else if (itemId == R.id.menu_itemCerrarSesion) {
+            message = "Cerrando sesión...";
+        } else {
+            message = "Opción no reconocida";
+        }
+
+        // Mostrar el Snackbar con el mensaje correspondiente
+        Snackbar.make(drawerLayout, message, Snackbar.LENGTH_SHORT).show();
+
+        if (itemId == R.id.menu_itemCerrarSesion) {
+            // Redirigir al Login
+            Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+
+    // Método para manejar clics en los ítems del Overflow Menu
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        String message;
+
+        if (item.getItemId() == R.id.OverflowSobreNosotros) {
+            message = "Seleccionaste: Sobre nosotros";
+        } else if (item.getItemId() == R.id.OverflowContactanos) {
+            message = "Seleccionaste: Contáctenos";
+        } else if (item.getItemId() == R.id.OverflowCompartir) {
+            message = "Seleccionaste: Compartir";
+        } else {
+            message = "Opción no reconocida";
+        }
+
+        // Mostrar el Snackbar con el mensaje correspondiente
+        Snackbar.make(findViewById(R.id.drawerLayout), message, Snackbar.LENGTH_SHORT).show();
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+
+    // Método para configurar el botón "Ver carrito"
+    public void buttonSeeCart() {
         Button buttonSeeCart = findViewById(R.id.buttonSeeCart);
-        buttonSeeCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MenuActivity.this, CartActivity.class);
-                startActivity(intent);
-            }
+        buttonSeeCart.setOnClickListener(view -> {
+            Intent intent = new Intent(MenuActivity.this, CartActivity.class);
+            startActivity(intent);
         });
     }
 
+    // Método para configurar clics en imágenes del catálogo
     private void configureImageClicks() {
         ImageView imageViewCafe = findViewById(R.id.imageViewCafe);
-        imageViewCafe.setOnClickListener(v -> openOrderActivity(1, "Cafe", R.drawable.cafefinal, 50.0));
+        imageViewCafe.setOnClickListener(v -> openOrderActivity(1, "Café", R.drawable.cafefinal, 50.0));
 
         ImageView imageViewPastel = findViewById(R.id.imageViewPastel);
         imageViewPastel.setOnClickListener(v -> openOrderActivity(2, "Pastel", R.drawable.pastelfinal, 100.0));
@@ -88,7 +154,7 @@ public class MenuActivity extends AppCompatActivity {
         imageViewBatido.setOnClickListener(v -> openOrderActivity(6, "Batido", R.drawable.batidos, 70.0));
     }
 
-
+    // Método para abrir la actividad de detalles del pedido
     private void openOrderActivity(int idProduct, String itemName, int imageResId, double basePrice) {
         Intent intent = new Intent(MenuActivity.this, OrderActivity.class);
         intent.putExtra("item_id", idProduct);
@@ -98,8 +164,7 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
+    // Inflar el menú de opciones
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -107,10 +172,11 @@ public class MenuActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+
+    // Método para ir a la pantalla del carrito
     private void goToCartScreen() {
         Intent intent = new Intent(MenuActivity.this, CartActivity.class);
         startActivity(intent);
     }
-
-
 }
