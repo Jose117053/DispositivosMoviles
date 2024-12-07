@@ -77,6 +77,12 @@ public class LoginActivity extends AppCompatActivity {
                     .edit()
                     .putInt("user_id", user.getIdUser())
                     .apply();
+
+            getSharedPreferences("user_email", MODE_PRIVATE)
+                    .edit()
+                    .putString("user_email", user.getEmail())
+                    .apply();
+
             return true;
         }
         return false;

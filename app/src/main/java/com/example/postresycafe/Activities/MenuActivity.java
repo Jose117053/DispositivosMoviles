@@ -1,7 +1,9 @@
 package com.example.postresycafe.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
@@ -27,13 +29,15 @@ public class MenuActivity extends AppCompatActivity {
     String username;
     NavigationView navigationView;
     View headerView;
+    TextView userEmailTextView;
+    TextView userNameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deslizable);
 
-        // Configuración inicial
+
         drawerLayout = findViewById(R.id.drawerLayout);
         buttonDrawerToggle = findViewById(R.id.buttonDrawerToggle);
         toolbar = findViewById(R.id.toolbar);
@@ -48,10 +52,12 @@ public class MenuActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        if(username !=null && !username.isEmpty()){
-            setUsernameOnDrawerHeader();
-            setEmailOnDrawerHeader();
-        }
+
+
+
+        setUsernameOnDrawerHeader();
+        setEmailOnDrawerHeader();
+
 
         setListenerNavigationView();
         configureImageClicks();
@@ -59,8 +65,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void setUsernameOnDrawerHeader(){
-        headerView = navigationView.getHeaderView(0);
-        TextView userNameTextView = headerView.findViewById(R.id.user_name);
+        userNameTextView = headerView.findViewById(R.id.user_name);
         if (userNameTextView != null && username != null) {
             userNameTextView.setText(username);
         }
@@ -76,17 +81,12 @@ public class MenuActivity extends AppCompatActivity {
 
 
     private void setEmailOnDrawerHeader(){
-        UserManager userManager = new UserManager(this);
-        User user = userManager.getByUsername(username);
+        SharedPreferences sharedPreferences = getSharedPreferences("user_email", MODE_PRIVATE);
+        String userEmail = sharedPreferences.getString("user_email", null);
 
-        if (user != null) {
-            TextView userEmailTextView = headerView.findViewById(R.id.user_email);
-            if (userEmailTextView != null) {
-                userEmailTextView.setText(user.getEmail());  // Establecer el correo
-            }
-        }
-
-
+        userEmailTextView = headerView.findViewById(R.id.user_email);
+        if(userEmailTextView != null && userEmail !=null)
+            userEmailTextView.setText(userEmail);
 
     }
 
