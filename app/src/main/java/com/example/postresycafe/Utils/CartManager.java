@@ -48,4 +48,14 @@ public class CartManager {
         cartQuantities.clear();
         cartPrices.clear();
     }
+
+    public void removeItem(int index) {
+        if (index >= 0 && index < cartItems.size()) {
+            cartItems.remove(index);
+            cartQuantities.remove(index);
+            cartPrices.remove(index);
+            cartProductIds.remove(index);
+        }
+    }
+
 }

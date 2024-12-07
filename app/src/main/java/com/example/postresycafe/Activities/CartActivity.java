@@ -40,7 +40,6 @@ public class CartActivity extends AppCompatActivity {
         addMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Llamar al método para ir a la ventana de registro
                 goToMenuScreen();
             }
         });
@@ -60,7 +59,6 @@ public class CartActivity extends AppCompatActivity {
 
         Button buttonPlaceOrder = findViewById(R.id.buttonPlaceOrder);
         buttonPlaceOrder.setOnClickListener(view -> {
-            // Obtener el precio final del carrito
             double totalPrice = calculateTotalPrice();
 
             if(totalPrice == 0){
@@ -139,6 +137,13 @@ public class CartActivity extends AppCompatActivity {
             itemNameView.setText(item);
             itemQuantityView.setText(String.format(Locale.getDefault(), "Cantidad: %d", quantity));
             itemPriceView.setText(String.format(Locale.getDefault(), "Precio: $%.2f", price));
+
+            Button removeButton = cartItemView.findViewById(R.id.buttonRemoveItem);
+            int currentIndex = i;
+            removeButton.setOnClickListener(v -> {
+                cartManager.removeItem(currentIndex);
+                updateCartView(cartManager);
+            });
 
             finalPrice += price;
 
