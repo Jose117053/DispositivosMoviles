@@ -62,6 +62,7 @@ public class MenuActivity extends AppCompatActivity {
         setListenerNavigationView();
         configureImageClicks();
         buttonSeeCart();
+        buttonMyOrders();
     }
 
     private void setUsernameOnDrawerHeader(){
@@ -198,6 +199,14 @@ public class MenuActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.overflow_menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void buttonMyOrders() {
+        Button myOrders = findViewById(R.id.buttonMyOrders);
+        myOrders.setOnClickListener(view -> {
+            Intent intent = new Intent(MenuActivity.this, MyOrdersActivity.class);
+            startActivity(intent);
+        });
     }
 
 

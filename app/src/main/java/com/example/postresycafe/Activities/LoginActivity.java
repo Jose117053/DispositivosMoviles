@@ -67,8 +67,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean verifyLogin(String username, String password) {
-        Log.d("LoginDebug", "Método verifyLogin fue llamado");  // Mensaje de depuración
-
         User user = userDB.getUserByUsername(username);
 
         if (user != null && user.getPassword().equals(password)) {

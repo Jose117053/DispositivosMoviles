@@ -64,6 +64,19 @@
         android:text="@string/view_cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonMyOrders"
+        android:layout_width="179dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/button_background"
+        android:text="@string/mis_pedidos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout

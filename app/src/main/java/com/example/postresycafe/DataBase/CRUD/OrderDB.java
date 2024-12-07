@@ -48,4 +48,19 @@ public class OrderDB extends GeneralOperationsDB<Order> {
         }
         return orders;
     }
+
+    public ArrayList<Order> getOrdersByUserId(int userId) {
+        ArrayList<Order> orders = new ArrayList<>();
+        Cursor c = query(TABLE_NAME, new String[]{COL_ID, COL_USER_ID, COL_TOTAL_PRICE},
+                COL_USER_ID + " = ?", new String[]{String.valueOf(userId)}, null);
+
+        if (c != null) {
+            while (c.moveToNext()) {
+                orders.add(cursorToEntity(c));
+            }
+            c.close();
+        }
+        return orders;
+    }
+
 }

@@ -53,4 +53,9 @@
     <string name="producto">Producto</string>
     <string name="cantidad_1">Cantidad: 1</string>
     <string name="precio_50_00">Precio: $50.00</string>
+    <string name="my_orders">My orders</string>
+    <string name="mis_pedidos">Mis pedidos</string>
+    <string name="no_order">No. Order</string>
+    <string name="price">Price</string>
+    <string name="details">Details</string>
 </resources>

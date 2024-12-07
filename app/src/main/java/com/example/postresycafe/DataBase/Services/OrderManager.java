@@ -57,4 +57,12 @@ public class OrderManager implements EntityManager<Order> {
         return false;
     }
 
+    public ArrayList<Order> getOrdersByUserId(int userId) {
+        orderDB.openForRead();
+        ArrayList<Order> orders = orderDB.getOrdersByUserId(userId);
+        orderDB.close();
+        return orders;
+    }
+
+
 }
