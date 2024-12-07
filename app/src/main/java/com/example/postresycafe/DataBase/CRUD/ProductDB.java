@@ -1,6 +1,8 @@
 package com.example.postresycafe.DataBase.CRUD;
 
+import com.example.postresycafe.DataBase.Entities.OrderItem;
 import com.example.postresycafe.DataBase.Entities.Product;
+import com.example.postresycafe.DataBase.Entities.User;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -43,6 +45,33 @@ public class ProductDB extends GeneralOperationsDB<Product> {
     public ArrayList<Product> getAll() {
         ArrayList<Product> products = new ArrayList<>();
         Cursor c = query(TABLE_NAME, new String[]{COL_ID, COL_NAME, COL_DESC, COL_PRICE}, null, null, COL_NAME);
+
+        if (c != null) {
+            while (c.moveToNext()) {
+                products.add(cursorToEntity(c));
+            }
+            c.close();
+        }
+        return products;
+    }
+
+    public Product getById(int id) {
+        openForRead();
+        Cursor c = query(TABLE_NAME, new String[]{COL_ID, COL_NAME, COL_DESC, COL_PRICE},
+                COL_ID + " = ?", new String[]{Integer.toString(id)}, null);
+
+        if (c != null && c.moveToFirst()) {
+            Product product = cursorToEntity(c);
+            c.close();
+            return product;
+        }
+        return null;
+    }
+
+    public ArrayList<Product> getProductsByOrderId(int orderId) {
+        ArrayList<Product> products = new ArrayList<>();
+        Cursor c = query(TABLE_NAME, new String[]{COL_ID, COL_NAME, COL_DESC, COL_PRICE},
+                COL_ID + " = ?", new String[]{String.valueOf(orderId)}, null);
 
         if (c != null) {
             while (c.moveToNext()) {

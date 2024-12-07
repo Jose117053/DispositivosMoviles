@@ -100,9 +100,8 @@ public class LoginActivity extends AppCompatActivity {
     public void initializeDefaultData(){
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         boolean productsInitialized = sharedPreferences.getBoolean(KEY_DEFAULT_INITIALIZED, false);
-
         if (!productsInitialized) {
-
+            Log.d("DebugDEFAULTDATA", "ENTRO AL IF");
             ProductManager productManager = new ProductManager(this);
             int countProducts = productManager.initializeDefaultProducts();
 

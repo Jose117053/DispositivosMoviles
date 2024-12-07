@@ -1,6 +1,7 @@
 package com.example.postresycafe.DataBase.Services;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import com.example.postresycafe.DataBase.CRUD.ProductDB;
 import com.example.postresycafe.DataBase.Entities.Product;
@@ -33,15 +34,7 @@ public class ProductManager implements EntityManager<Product> {
 
     @Override
     public Product getById(int id) {
-        productDB.openForRead();
-        ArrayList<Product> products = productDB.getAll();
-        productDB.close();
-        for (Product product : products) {
-            if (product.getIdProduct() == id) {
-                return product;
-            }
-        }
-        return null;
+        return productDB.getById(id);
     }
 
     @Override
@@ -60,10 +53,12 @@ public class ProductManager implements EntityManager<Product> {
 
     public int initializeDefaultProducts() {
         ArrayList<Product> defaultProducts = new ArrayList<>();
-        defaultProducts.add(new Product("Batido", "Batido de frutas", 80.0));
-        defaultProducts.add(new Product("Pastel", "Pastel de chocolate", 120.0));
-        defaultProducts.add(new Product("Café", "Café Americano", 50.0));
+        defaultProducts.add(new Product("Cafe", "cafe negro con 2 cucharadas de azucar", 50.0));
+        defaultProducts.add(new Product("Pastel", "Pastel de chocolate, con extra chantilly", 100.0));
+        defaultProducts.add(new Product("Chocolate", "Chocolate amargo con relleno de lechera", 75.0));
         defaultProducts.add(new Product("Pan", "Pan dulce", 30.0));
+        defaultProducts.add(new Product("Yogurt con Frutas", "Incluye fruta de mango, fresa, arandanos y manzana", 60.0));
+        defaultProducts.add(new Product("Batido", "de leche con chocolate", 70.0));
 
         productDB.openForWrite();
         int addedCount = 0;
@@ -75,6 +70,10 @@ public class ProductManager implements EntityManager<Product> {
         return addedCount;
     }
 
+
+    public ArrayList<Product> getProductsByOrderId(int orderId) {
+        return productDB.getProductsByOrderId(orderId);
+    }
 
 
 }

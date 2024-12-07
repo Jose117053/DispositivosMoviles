@@ -58,4 +58,5 @@
     <string name="no_order">No. Order</string>
     <string name="price">Price</string>
     <string name="details">Details</string>
+    <string name="product">Product</string>
 </resources>

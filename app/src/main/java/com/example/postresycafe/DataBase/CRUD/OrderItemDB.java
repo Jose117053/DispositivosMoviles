@@ -14,7 +14,7 @@ public class OrderItemDB extends GeneralOperationsDB<OrderItem> {
     private static final String COL_ORDER_ID = "idOrder";
     private static final String COL_PRODUCT_ID = "idProduct";
     private static final String COL_QUANTITY = "quantity";
-    private static final String COL_LOCAL_PRICE = "local_Price";
+    private static final String COL_LOCAL_PRICE = "local_price";
 
     public OrderItemDB(Context context) {
         super(context);

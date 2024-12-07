@@ -45,4 +45,12 @@ public class OrderItemManager implements EntityManager<OrderItem> {
     public boolean update(OrderItem orderItem) {
         throw new UnsupportedOperationException("Esto tambien deberia implementarse");
     }
+
+    public ArrayList<OrderItem> getItemsByOrderId(int orderId) {
+        orderItemDB.openForRead();
+        ArrayList<OrderItem> items = orderItemDB.getItemsByOrderId(orderId);
+        orderItemDB.close();
+        return items;
+    }
+
 }

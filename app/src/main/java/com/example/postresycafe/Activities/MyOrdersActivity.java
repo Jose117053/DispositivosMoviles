@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -51,6 +50,7 @@ public class MyOrdersActivity extends AppCompatActivity {
 
     private void displayOrders(int userId) {
         // Limpia las vistas existentes
+        Log.d("mispedidosDEBUG", "fdsfdsfs");
         cartLayout.removeAllViews();
 
         // Recupera las órdenes del usuario
@@ -58,10 +58,8 @@ public class MyOrdersActivity extends AppCompatActivity {
         ArrayList<Order> orders = orderManager.getOrdersByUserId(userId);
 
         if (orders.isEmpty()) {
-            TextView emptyTextView = new TextView(this);
+            TextView emptyTextView = findViewById(R.id.textViewNoOrders);
             emptyTextView.setText("There is no orders");
-            emptyTextView.setTextSize(18);
-            cartLayout.addView(emptyTextView);
             return;
         }
 
@@ -77,15 +75,15 @@ public class MyOrdersActivity extends AppCompatActivity {
             orderNumber.setText(String.format(Locale.getDefault(), "#%d", order.getIdOrder()));
             orderPrice.setText(String.format(Locale.getDefault(), "$%.2f", order.getTotalPrice()));
 
-            // Configura el botón "Details"
-            /*
+
+
             detailsButton.setOnClickListener(v -> {
                 Intent intent = new Intent(MyOrdersActivity.this, OrderDetailsActivity.class);
                 intent.putExtra("orderId", order.getIdOrder());
                 startActivity(intent);
             });
 
-             */
+
 
             // Agrega la vista inflada al contenedor principal
             cartLayout.addView(orderView);
