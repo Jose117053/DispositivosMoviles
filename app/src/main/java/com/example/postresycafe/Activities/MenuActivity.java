@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.postresycafe.DataBase.Entities.User;
+import com.example.postresycafe.DataBase.Services.UserManager;
 import com.example.postresycafe.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -22,6 +24,9 @@ public class MenuActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ImageButton buttonDrawerToggle;
     Toolbar toolbar;
+    String username;
+    NavigationView navigationView;
+    View headerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,38 +38,56 @@ public class MenuActivity extends AppCompatActivity {
         buttonDrawerToggle = findViewById(R.id.buttonDrawerToggle);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        username = getIntent().getStringExtra("username");
+        navigationView = findViewById(R.id.nav_view);
+        headerView = navigationView.getHeaderView(0);
 
-        // Abre el menú lateral al hacer clic en el botón de menú
         buttonDrawerToggle.setOnClickListener(view -> drawerLayout.open());
 
-        // Oculta el título por defecto en el Toolbar
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
-        // Recibir datos del Intent
-        String username = getIntent().getStringExtra("username");
+        if(username !=null && !username.isEmpty()){
+            setUsernameOnDrawerHeader();
+            setEmailOnDrawerHeader();
+        }
 
-        // Configuración del NavigationView
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        View headerView = navigationView.getHeaderView(0);
+        setListenerNavigationView();
+        configureImageClicks();
+        buttonSeeCart();
+    }
 
-        // Actualizar el nombre de usuario en el encabezado del menú lateral
+    private void setUsernameOnDrawerHeader(){
+        headerView = navigationView.getHeaderView(0);
         TextView userNameTextView = headerView.findViewById(R.id.user_name);
         if (userNameTextView != null && username != null) {
             userNameTextView.setText(username);
         }
+    }
 
-        // Configurar el listener para los ítems del menú
+    private void setListenerNavigationView(){
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             handleMenuClick(menuItem.getItemId());
             drawerLayout.closeDrawers(); // Cierra el menú lateral
             return true;
         });
+    }
 
-        // Configurar clics en imágenes y botones
-        configureImageClicks();
-        buttonSeeCart();
+
+    private void setEmailOnDrawerHeader(){
+        UserManager userManager = new UserManager(this);
+        User user = userManager.getByUsername(username);
+
+        if (user != null) {
+            TextView userEmailTextView = headerView.findViewById(R.id.user_email);
+            if (userEmailTextView != null) {
+                userEmailTextView.setText(user.getEmail());  // Establecer el correo
+            }
+        }
+
+
+
     }
 
     // Método para manejar clics en los ítems del menú lateral
@@ -91,11 +114,17 @@ public class MenuActivity extends AppCompatActivity {
         Snackbar.make(drawerLayout, message, Snackbar.LENGTH_SHORT).show();
 
         if (itemId == R.id.menu_itemCerrarSesion) {
-            // Redirigir al Login
-            Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+           logout();
         }
+    }
+
+    private void logout() {
+        getSharedPreferences("user_session", MODE_PRIVATE).edit().clear().apply();
+
+        Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
 
@@ -124,7 +153,6 @@ public class MenuActivity extends AppCompatActivity {
 
 
 
-    // Método para configurar el botón "Ver carrito"
     public void buttonSeeCart() {
         Button buttonSeeCart = findViewById(R.id.buttonSeeCart);
         buttonSeeCart.setOnClickListener(view -> {
@@ -173,10 +201,4 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-
-    // Método para ir a la pantalla del carrito
-    private void goToCartScreen() {
-        Intent intent = new Intent(MenuActivity.this, CartActivity.class);
-        startActivity(intent);
-    }
 }

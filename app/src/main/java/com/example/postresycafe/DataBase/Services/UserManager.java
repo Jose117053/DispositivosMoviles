@@ -1,9 +1,11 @@
 package com.example.postresycafe.DataBase.Services;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import com.example.postresycafe.DataBase.CRUD.UserDB;
 import com.example.postresycafe.DataBase.Entities.User;
+
 
 import java.util.ArrayList;
 
@@ -33,15 +35,11 @@ public class UserManager implements EntityManager<User> {
 
     @Override
     public User getById(int id) {
-        userDB.openForRead();
-        ArrayList<User> users = userDB.getAll();
-        userDB.close();
-        for (User user : users) {
-            if (user.getIdUser() == id) {
-                return user;
-            }
-        }
-        return null;
+        return userDB.getById(id);
+    }
+
+    public User getByUsername(String username) {
+        return userDB.getUserByUsername(username);
     }
 
     @Override

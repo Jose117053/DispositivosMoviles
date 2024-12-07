@@ -19,6 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText editTextUsername, editTextEmail, editTextPassword, editTextConfirmPassword;
     private Button nextButton;
     private UserDB userDB;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +43,20 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        onClickBack();
 
 
+
+    }
+
+    private void onClickBack(){
+        backButton = findViewById(R.id.buttonBack);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToMainScreen();
+            }
+        });
     }
 
     private void registerUser() {
@@ -83,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void goToMainScreen() {
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }

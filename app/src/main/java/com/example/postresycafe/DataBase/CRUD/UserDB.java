@@ -41,9 +41,21 @@ public class UserDB extends GeneralOperationsDB<User> {
         }
         return null;
     }
+    public User getById(int id) {
+        openForRead();
+        Cursor c = query(TABLE_NAME, new String[]{COL_ID, COL_USERNAME, COL_EMAIL, COL_PASSWORD},
+                COL_ID + " = ?", new String[]{Integer.toString(id)}, null);
+
+        if (c != null && c.moveToFirst()) {
+            User user = cursorToEntity(c);
+            c.close();
+            return user;
+        }
+        return null;
+    }
 
     @Override
-    protected User cursorToEntity(Cursor c) {
+    public User cursorToEntity(Cursor c) {
         User user = new User();
         user.setIdUser(c.getInt(c.getColumnIndexOrThrow(COL_ID)));
         user.setUsername(c.getString(c.getColumnIndexOrThrow(COL_USERNAME)));
